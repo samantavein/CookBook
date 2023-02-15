@@ -9,8 +9,6 @@ import AppRecipe from "./AppRecipe";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-
-
 function App() {
 
   return (
@@ -20,14 +18,26 @@ function App() {
           <div className="App">
             <Navbar />
           </div>
+          <div className="content">
+              <Switch>
+                <Route exact path ="/">
+                  <RecipeList />
+                </Route>            
+              </Switch>
+          </div>
+
 
           <div className="content">
               <Switch>
                 <Route exact path ="/create">
-                  <AppRecipe />
+                  <RecipeProvider>
+                    <AddRecipe />
+                  </RecipeProvider>                 
                 </Route>            
               </Switch>
           </div>
+
+     
 
         </Router>
 

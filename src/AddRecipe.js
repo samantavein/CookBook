@@ -10,30 +10,43 @@ const AddRecipe = () => {
       ...recipes,
       {
         title: e.target.title.value,
-        ingredients: e.target.ingredients.value
+        ingredients: e.target.ingredients.value,
+        method: e.target.method.value,
+        time: e.target.time.value
+
       }
     ]);
     e.target.title.value = "";
     e.target.ingredients.value = "";
+    e.target.method.value = "";
+    e.target.time.value = "";
   };
 
   return (
-    <form onSubmit={addRecipe}>
+    <form >
+      <label>Recipe title:</label>
       <input 
         type="text" 
         name="title" 
-        placeholder="Recipe title" />
+      />
+      <label>Recipe ingredients:</label>
       <input
         type="text"
-        name="ingredients"
-        placeholder="Ingredients"
+        name="ingredients" 
       />
-       <input
-          type="text"
-          name="steps"
-          placeholder="Steps"
+      <button>add</button>
+      <label>Recipe method:</label>
+       <textarea
+        type="text"
+        name="method"       
       />
-      <button type="submit">Add Recipe</button>
+      <label>Cooking time (in minutes):</label>
+      <input
+      type="text"
+      name="time"
+
+      />
+      <button type="submit" onSubmit={addRecipe}>submit</button>
     </form>
   );
 };

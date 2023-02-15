@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
+
+import renderDetails from "./details";
 
 const Navbar = () => {
+    /*
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -13,33 +16,53 @@ const Navbar = () => {
 
     fetchData();
   }, []);
+*/
+
+const [searchTerm, setSearchTerm] = useState("");
+
+const handleSearchInput = (event) => {
+  setSearchTerm(event.target.value);
+};
 
   return (
-    <nav className="navbar">
-      <div className="links">
-        <Link to="/">
-          <h1>CookBook</h1>
-        </Link>
-        <div>
-        {recipes.map(recipe => (
-          <div key={recipe.id}>
-            <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
-          </div>
-        ))}
-        </div>
 
-      </div>
+        <nav className="navbar">
+            <div className="links">
+                <Link to="/">
+                <h1>Cook Book</h1>
+                </Link>
+            </div>
+            <label>Search:</label>
+            <div>        
+                <input
+                    type="text"                   
+                    value={searchTerm}
+                    onChange={handleSearchInput}
+                />
+            </div>
 
-      <div>
-        <Link to="/create">
-          <p>Add new recipe</p>
-        </Link>
-      </div>
-    </nav>
+            <div>
+                <Link to="/create">
+                <button>Create recipe</button>
+                </Link>
+            </div>
+        </nav>
+
   );
 };
 
 export default Navbar;
+
+/*
+        <div>
+        {recipes.map(recipe => (
+          <div key={recipe.id}>
+            <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
+            <renderDetails />
+          </div>
+        ))}
+        </div>
+*/
 
 /*
 import { Link } from "react-router-dom";

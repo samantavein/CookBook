@@ -3,7 +3,7 @@ import { RecipeConsumer } from './RecipeContext';
 
 const id = new URLSearchParams(window.location.search).get('id');
 const container = document.querySelector('.details');
-const deleteBtn = document.querySelector('.delete');
+
 
 
 const renderDetails = async () => {
@@ -21,12 +21,8 @@ const renderDetails = async () => {
   container.innerHTML = template;
 }
 
-deleteBtn.addEventListener('click', async () => {
-  const res = await fetch('http://localhost:4001/recipes/' + id, {
-    method: 'DELETE'
-  });
-  window.location.replace("/");
-})
+
 
 window.addEventListener('DOMContentLoaded', renderDetails);
 
+export default renderDetails;
