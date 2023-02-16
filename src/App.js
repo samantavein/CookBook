@@ -1,16 +1,12 @@
-
 import React from "react";
-import AddRecipe from "./AddRecipe";
-import RecipeList from "./RecipeList";
+import CreateRecipe from "./Pages/CreateRecipe";
+import RecipeList from "./Pages/RecipeList";
 import { RecipeProvider } from "./RecipeContext";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './Navbar';
-import AppRecipe from "./AppRecipe";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import Navbar from './components/Navbar';
+import RecipeDetails from "./Pages/RecipeDetails";
 
 function App() {
-
   return (
     <nav>
       <div>
@@ -21,30 +17,36 @@ function App() {
           <div className="content">
               <Switch>
                 <Route exact path ="/">
-                  <RecipeList />
+                  <RecipeProvider>
+                    <RecipeList />
+                  </RecipeProvider>
                 </Route>            
               </Switch>
           </div>
-
 
           <div className="content">
               <Switch>
                 <Route exact path ="/create">
                   <RecipeProvider>
-                    <AddRecipe />
+                    <CreateRecipe />
                   </RecipeProvider>                 
                 </Route>            
               </Switch>
           </div>
 
-     
-
+          <div className="content">
+              <Switch>
+                <Route exact path ="/recipes/">
+                  <RecipeProvider>
+                    <RecipeDetails />
+                  </RecipeProvider>                 
+                </Route>            
+              </Switch>
+          </div>
+          
         </Router>
-
       </div>
-       
     </nav>
-
   );
  
 }

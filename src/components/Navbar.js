@@ -1,54 +1,34 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 
-import renderDetails from "./details";
-
 const Navbar = () => {
-    /*
-  const [recipes, setRecipes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("http://localhost:4001/recipes");
-      const data = await res.json();
-      setRecipes(data);
-    };
+  const handleSearchInput = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
-    fetchData();
-  }, []);
-*/
+    return (
+          <nav className="navbar">
+              <div className="links">
+                  <Link to="/">
+                  <h1>Cook Book</h1>
+                  </Link>
+              </div>
+              <label><p>Search:</p></label>    
+              <div>                       
+                  <input
+                      type="text"                   
+                      value={searchTerm}
+                      onChange={handleSearchInput}
+                  />       
+                  <Link to="/create">
+                  <button>Create recipe</button>
+                  </Link>
+              </div>
+          </nav>
 
-const [searchTerm, setSearchTerm] = useState("");
-
-const handleSearchInput = (event) => {
-  setSearchTerm(event.target.value);
-};
-
-  return (
-
-        <nav className="navbar">
-            <div className="links">
-                <Link to="/">
-                <h1>Cook Book</h1>
-                </Link>
-            </div>
-            <label>Search:</label>
-            <div>        
-                <input
-                    type="text"                   
-                    value={searchTerm}
-                    onChange={handleSearchInput}
-                />
-            </div>
-
-            <div>
-                <Link to="/create">
-                <button>Create recipe</button>
-                </Link>
-            </div>
-        </nav>
-
-  );
+    );
 };
 
 export default Navbar;
@@ -115,4 +95,18 @@ const Navbar = () => {
 }
  
 export default Navbar;
+*/
+
+    /*
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://localhost:4001/recipes");
+      const data = await res.json();
+      setRecipes(data);
+    };
+
+    fetchData();
+  }, []);
 */

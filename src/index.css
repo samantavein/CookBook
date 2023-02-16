@@ -6,39 +6,32 @@ body {
   font-family: Arial, sans-serif;
   margin: 0px;
   padding: 0;
-
   background-color:#d3d2d2;
 }
+
 .navbar {
-  left:0;
-  right: 0;
-  top: 0;
   background-color: #5900a1;
-  color: rgb(0, 0, 0);
   display: flex;
-  padding: 0px;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .navbar a {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
   text-decoration: none;
-  
 }
 
 .navbar a:hover {
-  color: rgb(221, 221, 221);
+  color: rgb(209, 209, 209);
 }
+
 .Add {
   font-size: 10px;
 }
 
 form {
   display: flex;
-  
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -47,27 +40,16 @@ form {
   background-color: #d3d2d2;
 }
 
-input[type="text"] {
-
+input[type="text"], textarea {
+  border-radius: 4px;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 18px;
   border: 1px solid lightgray;
-  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-input[type="textarea"] {
-
-  margin-bottom: 20px;
-  font-size: 18px;
-  border-radius: 2px;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 button {
-  text-decoration: none;
   padding: 8px 18px;
   background-color: #5900a1;
   color: #fff;
@@ -84,11 +66,17 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 30px;
+}
+label p{
+  color:rgb(255, 255, 255);
 }
 label input {
+  
   margin-top: 0.5em;
   text-align: left;
 }
+
 /*
 button[type="submit"] {
   width: 100%;
