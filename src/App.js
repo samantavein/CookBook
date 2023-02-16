@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CreateRecipe from "./Pages/CreateRecipe";
 import RecipeList from "./Pages/RecipeList";
 import { RecipeProvider } from "./RecipeContext";
@@ -7,18 +7,24 @@ import Navbar from './components/Navbar';
 import RecipeDetails from "./Pages/RecipeDetails";
 
 function App() {
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchInput = (event) => {
+    setSearchTerm(event.target.value);
+  };
   return (
     <nav>
       <div>
       <Router>
           <div className="App">
-            <Navbar />
+          <Navbar searchTerm={searchTerm} handleSearchInput={handleSearchInput} />
           </div>
           <div className="content">
               <Switch>
                 <Route exact path ="/">
                   <RecipeProvider>
-                    <RecipeList />
+                  <RecipeList searchTerm={searchTerm} />
                   </RecipeProvider>
                 </Route>            
               </Switch>

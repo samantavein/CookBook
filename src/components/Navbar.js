@@ -1,4 +1,37 @@
 import { Link } from "react-router-dom";
+import React from "react";
+
+const Navbar = ({ searchTerm, handleSearchInput }) => {
+  return (
+    <nav className="navbar">
+      <div className="links">
+        <Link to="/">
+          <h1>Cook Book</h1>
+        </Link>
+      </div>
+      <label>
+        <p>Search:</p>
+      </label>
+      <div>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchInput}
+        />
+        <Link to="/create">
+          <button>Create recipe</button>
+        </Link>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+
+/*
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 
 const Navbar = () => {
@@ -32,7 +65,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
+*/
 /*
         <div>
         {recipes.map(recipe => (
