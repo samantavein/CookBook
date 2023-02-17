@@ -112,7 +112,7 @@ const RecipeList = ({ searchTerm }) => {
         {filteredRecipes.map((recipe) => (
           <div key={recipe.id}>
             <h3>{recipe.title}</h3>
-            <p>{recipe.time} to make</p>
+            <p>{recipe.time} minutes to make</p>
             <Link to={`/recipes/${recipe.id}`}>
               <button>Cook this</button>
             </Link>

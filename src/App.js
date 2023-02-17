@@ -18,13 +18,16 @@ function App() {
       <div>
       <Router>
           <div className="App">
-          <Navbar searchTerm={searchTerm} handleSearchInput={handleSearchInput} />
+          <Navbar 
+          searchTerm={searchTerm} 
+          handleSearchInput={handleSearchInput} />
           </div>
           <div className="content">
               <Switch>
                 <Route exact path ="/">
                   <RecipeProvider>
-                  <RecipeList searchTerm={searchTerm} />
+                  <RecipeList 
+                  searchTerm={searchTerm} />
                   </RecipeProvider>
                 </Route>            
               </Switch>
@@ -42,7 +45,7 @@ function App() {
 
           <div className="content">
               <Switch>
-                <Route exact path ="/recipes/">
+                <Route path ="/recipes/:id">
                   <RecipeProvider>
                     <RecipeDetails />
                   </RecipeProvider>                 
