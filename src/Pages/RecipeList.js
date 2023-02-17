@@ -87,8 +87,38 @@ export default RecipeList;
 */
 
 import React, { useContext, useEffect } from "react";
-import { RecipeContext } from "../RecipeContext";
+import { RecipeContext } from "../hooks/RecipeContext";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+
+const StyledDiv = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+max-width: 800px;
+padding: 10px;
+background-color: white; 
+box-shadow: 0px 0px 2px grey;
+border-radius: 4px;
+`;
+
+const StyledButton = styled.button`
+  padding: 7px 18px;
+  background-color: #d3d2d2;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: pointer;
+`;
+const RecipeListContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 70%;
+  margin: 40px auto;
+`;
+
 
 const RecipeList = ({ searchTerm }) => {
   const [recipes, setRecipes] = useContext(RecipeContext);
@@ -107,20 +137,18 @@ const RecipeList = ({ searchTerm }) => {
   );
 
   return (
-    <form>
-      <div>
+    <RecipeListContainer>
         {filteredRecipes.map((recipe) => (
-          <div key={recipe.id}>
+          <StyledDiv key={recipe.id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.time} minutes to make</p>
-            <Link to={`/recipes/${recipe.id}`}>
-              <button>Cook this</button>
-            </Link>
             <p>{recipe.method.slice(0, 100)}...</p>
-          </div>
+            <Link to={`/recipes/${recipe.id}`}>
+              <StyledButton>Cook this</StyledButton>
+            </Link>
+          </StyledDiv>
         ))}
-      </div>
-    </form>
+    </RecipeListContainer>
   );
 };
 

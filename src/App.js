@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import CreateRecipe from "./Pages/CreateRecipe";
-import RecipeList from "./Pages/RecipeList";
-import { RecipeProvider } from "./RecipeContext";
+import CreateRecipe from "./pages/CreateRecipe";
+import RecipeList from "./pages/RecipeList";
+import { RecipeProvider } from "./hooks/RecipeContext";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import RecipeDetails from "./Pages/RecipeDetails";
+import RecipeDetails from "./pages/RecipeDetails";
 
 function App() {
 

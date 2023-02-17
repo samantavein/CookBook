@@ -1,11 +1,62 @@
-
-
 import React, { useContext, useState } from "react";
-import { RecipeContext } from "../RecipeContext";
+import { RecipeContext } from "../hooks/RecipeContext";
+import styled from "styled-components";
+import { css } from "styled-components";
+
+const CreateRecipeContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  max-width: 800px;
+  padding: 30px;
+  
+`;
+
+const CreateButton = styled.button`
+  padding: 7px 18px;
+  background-color: #5900a1;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  float: right;
+  ${props => props.margin && css`
+    margin-left: 5px;
+  `}
+  
+`;
+
+const CreateRecipeLabel = styled.label`
+font-size: 17px;
+margin-bottom: 10px;
+font-family: Arial, sans-serif;
+color: grey;
+`;
+
+const CreateRecipeInput = styled.input`
+  width: 30%;
+  font-size: 18px;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+  
+`;
+
+const CreateRecipeTextarea = styled.textarea`
+  width: 30%;
+  font-size: 18px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+
+`;
 
 const CreateRecipe = () => {
   const [recipes, setRecipes] = useContext(RecipeContext);
   const [ingredients, setIngredients] = useState([]);
+
 
   const handleAddIngredient = (e) => {
     e.preventDefault();
@@ -13,7 +64,7 @@ const CreateRecipe = () => {
     e.target.ingredient.value = "";
   };
 
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -44,28 +95,31 @@ const CreateRecipe = () => {
 
   return (  
     <form onSubmit={handleSubmit}>
-      <h2>Add new recipe</h2>
-      <label>Recipe title:</label>
-      <input type="text" name="title" />
-      <label>Recipe ingredients:</label>
-      <div>
+      <h2>Add a new recipe</h2>
+      <CreateRecipeLabel>Recipe title:</CreateRecipeLabel>
+      <CreateRecipeInput type="text" name="title" />
+      <CreateRecipeLabel>Recipe ingredients:</CreateRecipeLabel>
+      <div >
         {ingredients.map((ingredient, index) => (
           <div key={index}>{ingredient}</div>
         ))}
-        <input type="text" name="ingredient" />
-        <button onClick={handleAddIngredient}>add</button>
+        <CreateRecipeInput type="text" name="ingredient" />
+        <CreateButton margin onClick={handleAddIngredient}>add</CreateButton>
       </div>
-
-      <label>Recipe method:</label>
-      <textarea type="textarea" name="method" />
-      <label>Cooking time (in minutes):</label>
-      <input type="text" name="time" />
-      <button type="submit">submit</button>
+      
+      <CreateRecipeLabel>Recipe method:</CreateRecipeLabel>
+      <CreateRecipeTextarea type="textarea" name="method" />
+      <CreateRecipeLabel>Cooking time (in minutes):</CreateRecipeLabel>
+      <CreateRecipeInput type="text" name="time" />
+      <CreateButton type="submit">submit</CreateButton>
     </form>
   );
+
+
 };
 
 export default CreateRecipe;
+
 
 /*
 import React, { useContext } from "react";

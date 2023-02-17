@@ -1,81 +1,26 @@
 * {
 	box-sizing: border-box;
 }
-
 body {
-  font-family: Arial, sans-serif;
+  font-family: Tahoma, sans-serif;
   margin: 0px;
   padding: 0;
   background-color:#d3d2d2;
 }
 
-.navbar {
-  background-color: #5900a1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar a {
-  font-size: 25px;
-  color: white;
-  text-decoration: none;
-}
-
-.navbar a:hover {
-  color: rgb(209, 209, 209);
-}
-
-.Add {
-  font-size: 10px;
-}
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px;
-  padding: 40px;
   background-color: #d3d2d2;
-}
-
-input[type="text"], textarea {
-  border-radius: 4px;
   padding: 10px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  border: 1px solid lightgray;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-button {
-  padding: 8px 18px;
-  background-color: #5900a1;
-  color: #fff;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  font-size: 15px;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-right: 0px;
-  float:right;
-}
+/*sis iet uz recipeList*/
 
-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 30px;
-}
-label p{
-  color:rgb(255, 255, 255);
-}
-label input {
-  
-  margin-top: 0.5em;
-  text-align: left;
-}
+
 
 /*
 button[type="submit"] {
@@ -97,14 +42,6 @@ button[type="submit"]:hover {
 }
 */
 
-h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 18px;
-}
 
 
 

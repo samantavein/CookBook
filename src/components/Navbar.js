@@ -1,33 +1,117 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import styled from "styled-components";
 
+const NavbarContainer = styled.nav`
+  background-color: #5900a1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /*padding: 0 22%;*/
+`;
+
+const Logo = styled.h1`
+  font-size: 25px;
+  color: white;
+  text-decoration: none;
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const SearchLabel = styled.p`
+  font-size: 18px;
+  color: white;
+  margin: 0;
+  margin-right: 10px;
+`;
+
+const SearchInput = styled.input`
+  font-size: 18px;
+  border: none;
+  border-radius: 3px;
+  padding: 5px; 
+`;
+
+const CreateButton = styled.button`
+padding: 8px 10px;
+background-color: #5900a1;
+color: #fff;
+border: 1px solid lightgray;
+border-radius: 3px;
+font-size: 15px;
+cursor: pointer;
+margin-left: 40px;
+margin-right: 0px;
+float:right;
+`;
 const Navbar = ({ searchTerm, handleSearchInput }) => {
+
   return (
-    <nav className="navbar">
-      <div className="links">
-        <Link to="/">
-          <h1>Cook Book</h1>
-        </Link>
-      </div>
-      <label>
-        <p>Search:</p>
-      </label>
-      <div>
-        <input
+    <NavbarContainer>
+      <Link to="/">
+        <Logo>Cook Book</Logo>
+      </Link>
+      <SearchContainer>
+        <SearchLabel>Search:</SearchLabel>
+        <SearchInput
           type="text"
           value={searchTerm}
           onChange={handleSearchInput}
         />
         <Link to="/create">
-          <button>Create recipe</button>
+          <CreateButton>Create recipe</CreateButton>
         </Link>
-      </div>
-    </nav>
+      </SearchContainer>
+    </NavbarContainer>
+  );
+};
+
+
+
+export default Navbar;
+
+/*import { Link } from "react-router-dom";
+import React from "react";
+import styled from 'styled-components';
+import { css } from 'styled-components';
+
+const Navbar = ({ searchTerm, handleSearchInput }) => {
+
+
+  return (
+
+      <nav className="navbar">
+        <div>
+          <Link to="/">
+
+            <h1>Cook Book</h1>
+
+          </Link>
+        </div>
+        <label>
+          <p>Search:</p>
+        </label>
+        <div>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchInput}
+          />
+          <Link to="/create">
+            <button>Create recipe</button>
+          </Link>
+        </div>
+      </nav>
+
   );
 };
 
 export default Navbar;
-
+*/
 
 
 /*

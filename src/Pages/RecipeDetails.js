@@ -1,12 +1,32 @@
-
-
 import React, { useContext, useState, useEffect } from "react";
-import { RecipeContext } from "../RecipeContext";
+import { RecipeContext } from "../hooks/RecipeContext";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { css } from "styled-components";
+
+const Container = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  max-width: 70%;
+  padding: 30px;
+  background-color: white; 
+`;
+
+const Title = styled.h2`
+  text-align: center;
+`;
+
+const Text = styled.p`
+  font-size: 17px;
+  ${props => props.center && css`
+    text-align: center;;
+  `}
+`;
 
 const RecipeDetails = () => {
   const { id } = useParams();
-  //const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [recipes, setRecipes] = useContext(RecipeContext);
@@ -30,14 +50,14 @@ const RecipeDetails = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <form>
+    <Container>
       <div key={recipes.id}>
-        <h2>{recipes.title}</h2>
+        <Title center>{recipes.title}</Title>
 
-        <p>Takes {recipes.time} minutes to make</p>
-        <p>{recipes.method}</p>   
+        <Text center>Takes {recipes.time} minutes to make</Text>
+        <Text>{recipes.method}</Text>   
     </div>
-    </form>
+    </Container>
 
   );
 };
