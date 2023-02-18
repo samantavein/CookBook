@@ -1,155 +1,87 @@
-/*
-import React, { useContext, useEffect } from "react";
-import { RecipeContext } from "./RecipeContext";
-import { Link } from "react-router-dom";
-
-const RecipeList = () => {
-  const [recipes, setRecipes] = useContext(RecipeContext);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      // Fetch data from the context provider
-      setRecipes(await fetch("http://localhost:3001/recipes").then((res) => res.json()));
-    };
-
-    fetchData();
-  }, [setRecipes]);
-
-  return (
-    <form>
-      <div>
-        {recipes.map((recipe) => (
-          <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.time} to make</p>
-            <p>{recipe.method.slice(0, 100)}...</p>
-            <Link to={`/recipes/${recipe.id}`}>
-              <button>Cook this</button>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </form>
-  );
-};
-
-export default RecipeList;
-*/
-
-
-/*
-import React, { useContext } from "react";
-import { RecipeContext } from "../RecipeContext";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-const RecipeList = () => {
-  const [recipes, setRecipes] = useContext(RecipeContext);
-
-  //const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("http://localhost:4001/recipes");
-      const data = await res.json();
-      setRecipes(data);
-    };
-    fetchData();
-  }, [setRecipes]); 
-
-
-  return (
-    <form >
-        <div >
-        {recipes.map((recipe) => (
-        <div key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.time} to make</p>
-            <Link to={`/recipes/${recipe.id}`}><button>Cook this</button></Link>
-            <p>{recipe.method.slice(0,100)}...</p>     
-        </div>
-        ))}
-    </div>
-  </form>
-  );
-};
-
-export default RecipeList;
-*/
-/*   
-    <div >
-      {recipes.map((recipe, index) => (
-        <div key={index}>
-          <h3>{recipe.title}</h3>
-          <p>{recipe.ingredients}</p>
-        </div>
-      ))}
-    </div>
-*/
-
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { RecipeContext } from "../hooks/RecipeContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import { css } from "styled-components";
 
 const StyledDiv = styled.div`
 display: flex;
 flex-direction: column;
-align-items: center;
 max-width: 800px;
-padding: 10px;
+padding: 20px;
 background-color: white; 
 box-shadow: 0px 0px 2px grey;
 border-radius: 4px;
+transition: transform 0.2s;
+&:hover {
+  transform: rotate(3deg);
+}
 `;
-
 const StyledButton = styled.button`
-  padding: 7px 18px;
-  background-color: #d3d2d2;
-  border-radius: 3px;
-  font-size: 15px;
-  cursor: pointer;
+padding: 7px 18px;
+background-color: #d3d2d2;
+border-radius: 3px;
+border: none;
+font-size: 15px;
+cursor: pointer;
+  
 `;
-const RecipeListContainer = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   justify-content: space-between;
   max-width: 70%;
-  margin: 40px auto;
+  margin: 50px auto; 
 `;
-
+const StyledText = styled.p`
+  ${props => props.center && css`
+      text-align: center;
+  `}
+  ${props => props.gray && css`
+    margin-top: 0px;
+    color: gray;
+  `}
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+`;
 
 const RecipeList = ({ searchTerm }) => {
   const [recipes, setRecipes] = useContext(RecipeContext);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("http://localhost:4001/recipes");
       const data = await res.json();
       setRecipes(data);
+      setLoading(false);
     };
     fetchData();
   }, [setRecipes]);
+
+  if (loading) return <StyledText center>Loading...</StyledText>;
 
   const filteredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <RecipeListContainer>
+    <Container>
         {filteredRecipes.map((recipe) => (
           <StyledDiv key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <p>{recipe.time} minutes to make</p>
+            <h3 style={{ marginBottom: '0px' }} >{recipe.title}</h3>
+            <StyledText gray>{recipe.time} minutes to make</StyledText>
             <p>{recipe.method.slice(0, 100)}...</p>
-            <Link to={`/recipes/${recipe.id}`}>
+            <StyledLink to={`/recipes/${recipe.id}`}>
               <StyledButton>Cook this</StyledButton>
-            </Link>
+            </StyledLink>
           </StyledDiv>
         ))}
-    </RecipeListContainer>
+    </Container>
   );
 };
-
 export default RecipeList;

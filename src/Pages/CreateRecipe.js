@@ -3,60 +3,53 @@ import { RecipeContext } from "../hooks/RecipeContext";
 import styled from "styled-components";
 import { css } from "styled-components";
 
-const CreateRecipeContainer = styled.form`
+const Container = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 50px auto;
-  max-width: 800px;
-  padding: 30px;
-  
+  margin: 20px auto;
+  max-width: 35%; 
 `;
-
 const CreateButton = styled.button`
-  padding: 7px 18px;
+  padding: 7px 17px;
   background-color: #5900a1;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 4px;
   font-size: 15px;
-  cursor: pointer;
-  float: right;
+  cursor: pointer; 
+  border: none;
   ${props => props.margin && css`
-    margin-left: 5px;
+    margin-left: 2px;
+    float: right;
   `}
-  
 `;
-
 const CreateRecipeLabel = styled.label`
-font-size: 17px;
-margin-bottom: 10px;
-font-family: Arial, sans-serif;
-color: grey;
+  font-size: 17px;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  color: #5e5e5e;
 `;
-
 const CreateRecipeInput = styled.input`
-  width: 30%;
+  width: 100%;
   font-size: 18px;
   border-radius: 3px;
   padding: 5px;
   margin-bottom: 20px;
   border: 1px solid lightgray;
-  
+  ${props => props.width && css`
+  width: 85%;
+`}
 `;
-
 const CreateRecipeTextarea = styled.textarea`
-  width: 30%;
+  width: 100%;
   font-size: 18px;
   border-radius: 3px;
   margin-bottom: 20px;
   border: 1px solid lightgray;
-
 `;
 
 const CreateRecipe = () => {
   const [recipes, setRecipes] = useContext(RecipeContext);
   const [ingredients, setIngredients] = useState([]);
-
 
   const handleAddIngredient = (e) => {
     e.preventDefault();
@@ -64,11 +57,9 @@ const CreateRecipe = () => {
     e.target.ingredient.value = "";
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // send POST request to the server to add a new recipe
     const res = await fetch("http://localhost:4001/recipes", {
       method: "POST",
       headers: {
@@ -82,11 +73,9 @@ const CreateRecipe = () => {
       }),
     });
 
-    // get the newly added recipe from the server and add it to the context
     const newRecipe = await res.json();
     setRecipes([...recipes, newRecipe]);
 
-    // clear the form and ingredients list
     e.target.title.value = "";
     e.target.method.value = "";
     e.target.time.value = "";
@@ -94,8 +83,8 @@ const CreateRecipe = () => {
   };
 
   return (  
-    <form onSubmit={handleSubmit}>
-      <h2>Add a new recipe</h2>
+    <Container onSubmit={handleSubmit}>
+      <h2 style = {{ textAlign:"center" }}>Add a new recipe</h2>
       <CreateRecipeLabel>Recipe title:</CreateRecipeLabel>
       <CreateRecipeInput type="text" name="title" />
       <CreateRecipeLabel>Recipe ingredients:</CreateRecipeLabel>
@@ -103,7 +92,7 @@ const CreateRecipe = () => {
         {ingredients.map((ingredient, index) => (
           <div key={index}>{ingredient}</div>
         ))}
-        <CreateRecipeInput type="text" name="ingredient" />
+        <CreateRecipeInput width="true" type="text" name="ingredient" />
         <CreateButton margin onClick={handleAddIngredient}>add</CreateButton>
       </div>
       
@@ -111,13 +100,12 @@ const CreateRecipe = () => {
       <CreateRecipeTextarea type="textarea" name="method" />
       <CreateRecipeLabel>Cooking time (in minutes):</CreateRecipeLabel>
       <CreateRecipeInput type="text" name="time" />
-      <CreateButton type="submit">submit</CreateButton>
-    </form>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <CreateButton center type="submit">submit</CreateButton>
+      </div>
+    </Container>
   );
-
-
 };
-
 export default CreateRecipe;
 
 

@@ -3,42 +3,69 @@
     {
       "id": 1,
       "title": "Peanut Butter and Jelly Sandwich",
-      "ingredients": ["2 slices of bread", "peanut butter", "jelly"],
+      "ingredients": [
+        "2 slices of bread",
+        "peanut butter",
+        "jelly"
+      ],
       "method": "1. Spread peanut butter on one slice of bread. \n2. Spread jelly on the other slice of bread. \n3.Put the two slices of bread together. \n4. Cut in half and serve.",
       "time": "5"
     },
     {
       "id": 2,
       "title": "Scrambled Eggs",
-      "ingredients": ["2 eggs", "salt", "pepper", "butter"],
+      "ingredients": [
+        "2 eggs",
+        "salt",
+        "pepper",
+        "butter"
+      ],
       "method": "1. Crack eggs into a bowl and whisk together. \n2. Melt butter in a pan over medium heat. \n3. Add the whisked eggs to the pan. \n4. Stir constantly until the eggs are fully cooked. \n5. Season with salt and pepper to taste. \n6. Serve hot.",
       "time": "10"
     },
     {
       "id": 3,
       "title": "Simple Salad",
-      "ingredients": ["Lettuce", "tomato", "cucumber", "onion", "salad", "dressing"],
+      "ingredients": [
+        "Lettuce",
+        "tomato",
+        "cucumber",
+        "onion",
+        "salad",
+        "dressing"
+      ],
       "method": "1. Wash and chop lettuce, tomato, cucumber, and onion. \n2. Mix all the ingredients together in a bowl. \n3. Add salad dressing to taste. \n4. Serve cold.",
       "time": "5"
     },
     {
       "id": 4,
       "title": "Grilled Cheese Sandwich",
-      "ingredients": ["Bread", "Cheese", "Butter"],
+      "ingredients": [
+        "Bread",
+        "Cheese",
+        "Butter"
+      ],
       "method": "1. Butter one side of each slice of bread. 2. Place a slice of cheese on one piece of bread. 3. Top with the other slice of bread, buttered side up. 4. Heat a skillet over medium heat. 5. Place sandwich in the skillet and cook until cheese is melted and bread is golden brown, about 3-4 minutes per side.",
       "time": "10"
     },
     {
       "id": 5,
       "title": "Fruit Salad",
-      "ingredients": ["Assorted Fruit (such as strawberries, blueberries, bananas, kiwis)"],
+      "ingredients": [
+        "Assorted Fruit (such as strawberries, blueberries, bananas, kiwis)"
+      ],
       "method": "1. Cut fruit into bite-sized pieces. 2. Combine fruit in a bowl. 3. Serve chilled.",
       "time": "10"
     },
     {
       "id": 6,
       "title": "Scrambled Eggs",
-      "ingredients": ["Eggs", "Butter", "Salt", "Pepper"],
+      "ingredients": [
+        "Eggs",
+        "Butter",
+        "Salt",
+        "Pepper"
+      ],
       "method": "1. Crack eggs into a bowl and beat until well combined. 2. Heat a non-stick skillet over medium heat. 3. Melt butter in skillet. 4. Pour beaten eggs into skillet. 5. Use a spatula to stir the eggs until they are cooked to your desired level of doneness. 6. Season with salt and pepper to taste.",
       "time": "10"
     }
