@@ -13,14 +13,14 @@ const Container = styled.form`
   padding: 30px;
   background-color: white; 
 `;
-const Title = styled.h2`
+const StyledTitle = styled.h2`
   text-align: center;
 `;
 const StyledUl = styled.ul`
   text-decoration: none;
   color: grey;
 `;
-const Text = styled.p`
+const StyledText = styled.p`
   font-size: 17px;
   ${props => props.center && css`
     text-align: center;
@@ -42,19 +42,19 @@ const RecipeDetails = () => {
     fetchData();
   }, [id, setRecipes]);
 
-  if (loading) return <Text center>Loading...</Text>;
+  if (loading) return <StyledText center>Loading...</StyledText>;
 
   return (
     <Container>
       <div key={recipes.id}>
-        <Title center>{recipes.title}</Title>
-        <Text center>Takes {recipes.time} minutes to make</Text>
+        <StyledTitle center>{recipes.title}</StyledTitle>
+        <StyledText center>Takes {recipes.time} minutes to make</StyledText>
         <ul style={{  display: 'flex', justifyContent: "center" }}>
           {recipes.ingredients.map((ingredient, index) => (
             <StyledUl key={index}>{index === 0 ? ingredient : `, ${ingredient}`}</StyledUl>
           ))}
         </ul>       
-        <Text>{recipes.method}</Text>   
+        <StyledText>{recipes.method}</StyledText>   
     </div>
     </Container>
   );

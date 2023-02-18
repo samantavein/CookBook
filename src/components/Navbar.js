@@ -14,7 +14,7 @@ const FormContainer = styled.form`
   max-width: 70%;
   margin: auto; 
 `;
-const Logo = styled.h1`
+const StyledTitle = styled.h1`
   font-size: 25px;
   color: white;
   text-decoration: none;
@@ -26,7 +26,6 @@ const SearchContainer = styled.div`
 const SearchLabel = styled.p`
   font-size: 18px;
   color: white;
-  margin: 0;
   margin-right: 10px;
 `;
 const SearchInput = styled.input`
@@ -52,7 +51,7 @@ const Navbar = ({ searchTerm, handleSearchInput }) => {
     <NavbarContainer>
       <FormContainer>
         <Link to="/">
-          <Logo>Cook Book</Logo>
+          <StyledTitle>Cook Book</StyledTitle>
         </Link>
         <SearchContainer>
           <SearchLabel>Search:</SearchLabel>

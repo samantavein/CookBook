@@ -9,7 +9,7 @@ const Container = styled.form`
   margin: 20px auto;
   max-width: 35%; 
 `;
-const CreateButton = styled.button`
+const StyledButton = styled.button`
   padding: 7px 17px;
   background-color: #5900a1;
   color: #fff;
@@ -22,7 +22,7 @@ const CreateButton = styled.button`
     float: right;
   `}
 `;
-const CreateRecipeLabel = styled.label`
+const StyledLabel = styled.label`
   font-size: 17px;
   margin-bottom: 10px;
   font-family: Arial, sans-serif;
@@ -32,7 +32,7 @@ const CreateRecipeLabel = styled.label`
   margin-bottom: 10px;
 `}
 `;
-const CreateRecipeInput = styled.input`
+const StyledInput = styled.input`
   width: 100%;
   font-size: 18px;
   border-radius: 3px;
@@ -43,7 +43,7 @@ const CreateRecipeInput = styled.input`
   width: 85%;
 `}
 `;
-const CreateRecipeTextarea = styled.textarea`
+const StyledTextarea = styled.textarea`
   width: 100%;
   font-size: 18px;
   border-radius: 3px;
@@ -103,24 +103,24 @@ const CreateRecipe = () => {
   return (  
     <Container onSubmit={handleSubmit}>
       <h2 style={{ textAlign: "center" }}>Add a new recipe</h2>
-      <CreateRecipeLabel>Recipe title:</CreateRecipeLabel>
-      <CreateRecipeInput type="text" name="title" />
-      <CreateRecipeLabel >Recipe ingredients:</CreateRecipeLabel>
-      <CreateRecipeLabel small>Current ingredients: </CreateRecipeLabel>
+      <StyledLabel>Recipe title:</StyledLabel>
+      <StyledInput type="text" name="title" />
+      <StyledLabel >Recipe ingredients:</StyledLabel>
+      <StyledLabel small>Current ingredients:</StyledLabel>
       <div >
         {ingredients.map((ingredient, index) => (
           <div key={index}>{ingredient}</div>
         ))}
-        <CreateRecipeInput width="true" type="text" name="ingredient" value={ingredientInput} onChange={handleIngredientInput} />
-        <CreateButton margin onClick={handleAddIngredient}>add</CreateButton>      
+        <StyledInput width="true" type="text" name="ingredient" value={ingredientInput} onChange={handleIngredientInput} />
+        <StyledButton margin onClick={handleAddIngredient}>add</StyledButton>      
       </div>
 
-      <CreateRecipeLabel>Recipe method:</CreateRecipeLabel>
-      <CreateRecipeTextarea type="textarea" name="method" />
-      <CreateRecipeLabel>Cooking time (in minutes):</CreateRecipeLabel>
-      <CreateRecipeInput type="text" name="time" />
+      <StyledLabel>Recipe method:</StyledLabel>
+      <StyledTextarea type="textarea" name="method" />
+      <StyledLabel>Cooking time (in minutes):</StyledLabel>
+      <StyledLabel type="text" name="time" />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <CreateButton center type="submit">submit</CreateButton>
+        <StyledButton center type="submit">submit</StyledButton>
       </div>
     </Container>
   );
