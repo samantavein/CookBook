@@ -40,8 +40,8 @@ const StyledInput = styled.input`
   margin-bottom: 20px;
   border: 1px solid lightgray;
   ${props => props.width && css`
-  width: 85%;
-`}
+    width: 85%;
+  `}
 `;
 const StyledTextarea = styled.textarea`
   width: 100%;
@@ -118,7 +118,7 @@ const CreateRecipe = () => {
       <StyledLabel>Recipe method:</StyledLabel>
       <StyledTextarea type="textarea" name="method" />
       <StyledLabel>Cooking time (in minutes):</StyledLabel>
-      <StyledLabel type="text" name="time" />
+      <StyledInput type="text" name="time" />
       <div style={{ display: "flex", justifyContent: "center" }}>
         <StyledButton center type="submit">submit</StyledButton>
       </div>
