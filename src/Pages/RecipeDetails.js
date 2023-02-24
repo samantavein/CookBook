@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { css } from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
-import { setRecipes } from "../hooks/reducers";
+import { setRecipes } from "../reducers/recipeSlice";
 
 const Container = styled.form`
   display: flex;

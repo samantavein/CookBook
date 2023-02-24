@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setRecipes } from "../hooks/reducers";
+import { setRecipes } from "../reducers/recipeSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { css } from "styled-components";
@@ -54,8 +54,7 @@ const RecipeList = ({ searchTerm }) => {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
   const [loading, setLoading] = useState(true);
-
-
+  
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch('http://localhost:4001/recipes');

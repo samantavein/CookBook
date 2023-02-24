@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import { css } from "styled-components";
-import { addRecipe } from '../hooks/reducers';
+import { addRecipe } from '../reducers/recipeSlice';
 
 const Container = styled.form`
   display: flex;
