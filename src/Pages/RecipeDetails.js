@@ -1,8 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
-import { RecipeContext } from "../hooks/RecipeContext";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { css } from "styled-components";
+import { useSelector, useDispatch } from 'react-redux';
+import { setRecipes } from "../hooks/reducers";
 
 const Container = styled.form`
   display: flex;
@@ -30,17 +31,18 @@ const StyledText = styled.p`
 const RecipeDetails = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [recipes, setRecipes] = useContext(RecipeContext);
+  const recipes = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
-        const res = await fetch(`http://localhost:4001/recipes/${id}`);
-        const data = await res.json();
-        setRecipes(data);
-        setLoading(false);
+      const res = await fetch(`http://localhost:4001/recipes/${id}`);
+      const data = await res.json();
+      dispatch(setRecipes(data));
+      setLoading(false);
     };
     fetchData();
-  }, [id, setRecipes]);
+  }, [id, dispatch]);
 
   if (loading) return <StyledText center>Loading...</StyledText>;
 

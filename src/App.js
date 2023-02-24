@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CreateRecipe from "./pages/CreateRecipe";
 import RecipeList from "./pages/RecipeList";
-
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import RecipeDetails from "./pages/RecipeDetails";
