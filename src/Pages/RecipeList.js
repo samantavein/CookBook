@@ -1,5 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
-import { RecipeContext } from "../hooks/RecipeContext";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { setRecipes } from "../reducers/recipeSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { css } from "styled-components";
@@ -50,38 +51,103 @@ const StyledLink = styled(Link)`
 `;
 
 const RecipeList = ({ searchTerm }) => {
-  const [recipes, setRecipes] = useContext(RecipeContext);
+  const dispatch = useDispatch();
+  const recipes = useSelector((state) => state.recipes);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://localhost:4001/recipes");
+      const res = await fetch('http://localhost:4001/recipes');
       const data = await res.json();
-      setRecipes(data);
+      dispatch(setRecipes(data));
       setLoading(false);
     };
     fetchData();
-  }, [setRecipes]);
+  }, [dispatch]);
 
-  if (loading) return <StyledText center>Loading...</StyledText>;
-
+  
+  console.log('recipes:', recipes);
+  
   const filteredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  if (loading) return <StyledText center>Loading...</StyledText>;
+
   return (
     <Container>
-        {filteredRecipes.map((recipe) => (
-          <StyledDiv key={recipe.id}>
-            <h3 style={{ marginBottom: '0px' }} >{recipe.title}</h3>
-            <StyledText gray>{recipe.time} minutes to make</StyledText>
-            <p>{recipe.method.slice(0, 100)}...</p>
-            <StyledLink to={`/recipes/${recipe.id}`}>
-              <StyledButton>Cook this</StyledButton>
-            </StyledLink>
-          </StyledDiv>
-        ))}
+      {filteredRecipes.map((recipe) => (
+        <StyledDiv key={recipe.id}>
+          <h3 style={{ marginBottom: '0px' }}>{recipe.title}</h3>
+          <StyledText gray>{recipe.time} minutes to make</StyledText>
+          <p>{recipe.method.slice(0, 100)}...</p>
+          <StyledLink to={`/recipes/${recipe.id}`}>
+            <StyledButton>Cook this</StyledButton>
+          </StyledLink>
+        </StyledDiv>
+      ))}
     </Container>
   );
 };
+
 export default RecipeList;
+/*
+const RecipeList = ({ searchTerm }) => {
+  const dispatch = useDispatch();
+  const recipes = useSelector((state) => state.recipe.recipes);
+  const [loading, setLoading] = useState(true);
+
+  /*
+  useEffect(() => {
+    dispatch(fetchRecipes());
+  }, [dispatch]);
+*/
+/*
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://localhost:4001/recipes");
+      const data = await res.json();
+      dispatch(setRecipes(data));
+      setLoading(false);
+    };
+    fetchData();
+  }, [dispatch]);
+
+
+  const filteredRecipes = recipes.filter((recipe) =>
+  recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+/*
+  const filteredRecipes = useSelector(
+    createSelector(
+      (state) => state.recipes,
+      (state) => state.searchTerm,
+      (recipes, searchTerm) =>
+        recipes.filter((recipe) =>
+          recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+    )
+  );
+  */
+/*
+  if (loading) return <StyledText center>Loading...</StyledText>;
+
+  return (
+    <Container>
+      {filteredRecipes.map((recipe) => (
+        <StyledDiv key={recipe.id}>
+          <h3 style={{ marginBottom: '0px' }}>{recipe.title}</h3>
+          <StyledText gray>{recipe.time} minutes to make</StyledText>
+          <p>{recipe.method.slice(0, 100)}...</p>
+          <StyledLink to={`/recipes/${recipe.id}`}>
+            <StyledButton>Cook this</StyledButton>
+          </StyledLink>
+        </StyledDiv>
+      ))}
+    </Container>
+  );
+};
+
+export default RecipeList;
+*/

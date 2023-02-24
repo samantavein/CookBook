@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
-import { RecipeContext } from "../hooks/RecipeContext";
+import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import { css } from "styled-components";
+import { addRecipe } from '../reducers/recipeSlice';
 
 const Container = styled.form`
   display: flex;
@@ -52,7 +53,7 @@ const StyledTextarea = styled.textarea`
 `;
 
 const CreateRecipe = () => {
-  const [recipes, setRecipes] = useContext(RecipeContext);
+  const dispatch = useDispatch();
   const [ingredients, setIngredients] = useState([]);
   const [ingredientInput, setIngredientInput] = useState('');
 
@@ -91,13 +92,16 @@ const CreateRecipe = () => {
       }),
     });
 
+    
     const newRecipe = await res.json();
-    setRecipes([...recipes, newRecipe]);
+    dispatch(addRecipe(newRecipe));
+    
 
     e.target.title.value = "";
     e.target.method.value = "";
     e.target.time.value = "";
     setIngredients([]);
+
   };
 
   return (  

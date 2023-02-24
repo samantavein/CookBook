@@ -1,0 +1,71 @@
+
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+#nodefinee funkciju
+def y(x):
+    return -x**2 + 4*x
+
+# attēlo grafiku intervālā x[-1;5]
+fx = np.linspace(-1, 5)
+fy = y(fx)
+
+x = np.arange(-1, 5.1, 1)
+#aprekina y vērtības
+y = y(x)
+
+print("x:", x, "y:", y )
+#plt.plot(x, y, 'ro')
+#plt.plot(fx, fy, '--')
+
+# definee γ, h, Ʈ, kur γ=Ʈ/h**2
+h=3
+Ʈ=h
+γ=Ʈ/h**2
+
+print("γ=",γ)
+
+#izvedo nullu matricu kurā pēc tam saglabā u(xi,yi) vertibas
+u = np.zeros((6,4))
+
+u[-1,0] = y[0]
+u[0,0] = y[1]
+u[1,0] = y[2]
+u[2,0] = y[3]
+u[3,0] = y[4]
+u[4,0] = y[5]
+u[5,0] = y[6]
+
+
+for i in range(0,5):
+  j=1
+  u[i,j] = γ * (u[i+1,j-1] - 2 * u[i,j-1] + u[i-1,j-1]) + u[i,j-1]
+
+for i in range(0,5):
+  j=2
+  u[i,j] = γ * (u[i+1,j-1] - 2 * u[i,j-1] + u[i-1,j-1]) + u[i,j-1]
+
+for i in range(0,5):
+  j=3
+  u[i,j] = γ * (u[i+1,j-1] - 2 * u[i,j-1] + u[i-1,j-1]) + u[i,j-1]
+
+u[0,1] =0
+u[4,1] =0
+
+u[0,2] =0
+u[4,2] =0
+
+u[0,3] =0
+u[4,3] =0
+
+print("u(0)", u[:5,0])
+print("u(1)", u[:5,1])
+print("u(2)", u[:5,2])
+print("u(3)", u[:5,3])
+
+plt.plot(u[:5,0], 'ro', u[:5,1], 'bo', u[:5,2], 'go')
+plt.plot(u[:5,0], 'r--', u[:5,1], 'b--', u[:5,2], 'g--')
+
+plt.plot(u[:5,3], 'yo')
+plt.plot(u[:5,3], 'y--')
