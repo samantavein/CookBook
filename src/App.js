@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import CreateRecipe from "./pages/CreateRecipe";
-import RecipeList from "./pages/RecipeList";
+import CreateRecipe from "./Pages/CreateRecipe";
+import RecipeList from "./Pages/RecipeList";
 
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import RecipeDetails from "./pages/RecipeDetails";
+import RecipeDetails from "./Pages/RecipeDetails";
 
 function App() {
 
